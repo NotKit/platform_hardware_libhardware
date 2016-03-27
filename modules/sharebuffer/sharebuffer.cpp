@@ -576,6 +576,9 @@ int sharebuffer_device_open(const hw_module_t* module, const char* name,
             int format = (m->info.bits_per_pixel == 32)
                          ? HAL_PIXEL_FORMAT_RGBX_8888
                          : HAL_PIXEL_FORMAT_RGB_565;
+            /* Uncomment the line below if getting
+               "no suitable EGLConfig found" with Intel HD Graphics DRI driver */
+            // format = HAL_PIXEL_FORMAT_BGRA_8888;
             const_cast<uint32_t&>(dev->device.flags) = 0;
             const_cast<uint32_t&>(dev->device.width) = m->info.xres;
             const_cast<uint32_t&>(dev->device.height) = m->info.yres;
